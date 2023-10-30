@@ -1,10 +1,10 @@
 const googlestretegy = require('passport-google-oauth20').Strategy
-
+require('dotenv').config()
 const googleauth = (passport)=>{
     passport.use(new googlestretegy({
-        clientID: '632389055528-apaetbu9uhg1bunfi4ihnduhvb9favfq.apps.googleusercontent.com',
-        clientSecret: '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',
-        callbackURL: "http://localhost:9705/"
+        clientID: process.env.GOOGLE_CLIENT_ID ,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: "http://localhost:9705/user/google/auth"
     },(accessToken, refreshToken, profile, cb)=>{
         cb(null,profile)
     }))
